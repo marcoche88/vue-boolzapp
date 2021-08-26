@@ -1,0 +1,36 @@
+#main-background {
+    background: linear-gradient(to top, rgb(220, 219, 211) 85%, rgb(65, 148, 136) 15%);
+    height: 100vh;
+}
+#main-section {
+    height: calc(100vh - 48px);
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.white {
+    background-color: white;
+}
+
+.user-section, .notice-section {
+    border: 1px solid black;
+    height: 80px;
+}
+
+.find-section {
+    border: 1px solid black;
+}
+
+.contacts-section {
+    border: 1px solid black;
+    height: calc(100% - 54px - 160px);
+    overflow-y: scroll;
+}
+
+
