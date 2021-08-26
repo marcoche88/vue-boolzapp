@@ -23,9 +23,10 @@
             <div class="row h-100">
 
                 <!-- left side -->
-                <div class="col-4 gx-0">
+                <div class="col-4 h-100 gx-0">
                     <!-- user -->
-                    <div class="user-section d-flex justify-content-between align-items-center bg-grey-light p-2">
+                    <div
+                        class="user-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px">
                         <div class="user-name w-50">
                             <img src="./img/avatar_io.jpg" class="w-25 img-fluid rounded-circle" alt="avatar">
                             <span class="mx-1">Nome Utente</span>
@@ -37,18 +38,18 @@
                         </div>
                     </div>
                     <!-- notice -->
-                    <div class="notice-section d-flex justify-content-start align-items-center p-2 bg-blue-light">
+                    <div
+                        class="notice-section d-flex justify-content-start align-items-center p-2 bg-blue-light h-80px">
                         <div class="notice-icon rounded-circle text-center bg-white fs-5 font-blue-light mx-2">
                             <i class="fas fa-bell-slash"></i>
                         </div>
                         <div class="notice-message">
                             <div class="notice-message-top">Ricevi notifiche di nuovi messaggi</div>
-                            <div class="notice-message-bottom fs-7 font-grey-dark"><a class="font-grey-dark"
-                                    href="#">Attiva notifiche
+                            <div class="notice-message-bottom fs-7"><a class="font-grey-dark" href="#">Attiva notifiche
                                     desktop</a></div>
                         </div>
                     </div>
-                    <!-- input -->
+                    <!-- input find -->
                     <div class="find-section p-2 bg-grey-light-2">
                         <div class="input-group flex-nowrap">
                             <span class="input-group-text bg-white border-end-0"><i
@@ -59,19 +60,19 @@
                     </div>
                     <!-- contacts -->
                     <div class="contacts-section bg-white">
-                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px">
                             <img src="./img/avatar_1.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
                             <span class="mx-2">Michele</span>
                         </div>
-                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px">
                             <img src="./img/avatar_2.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
                             <span class="mx-2">Fabio</span>
                         </div>
-                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px">
                             <img src="./img/avatar_3.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
                             <span class="mx-2">Samuele</span>
                         </div>
-                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px">
                             <img src="./img/avatar_4.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
                             <span class="mx-2">Luisa</span>
                         </div>
@@ -79,7 +80,62 @@
                 </div>
 
                 <!-- right side -->
-                <div class="col-8 blue"></div>
+                <div class="col-8 h-100 gx-0">
+
+                    <!-- contact right -->
+                    <div
+                        class="contact-right-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px">
+                        <div class="contact-right w-50 d-flex justify-content-start align-items-center p-2">
+                            <img src="./img/avatar_1.jpg" class="w-13 img-fluid rounded-circle" alt="contact-1">
+                            <div class="contact-name mx-2">
+                                <div class="contact-name-top">Michele</div>
+                                <div class="contact-name-bottom fs-7 font-grey-dark">Ultimo accesso oggi alle</div>
+                            </div>
+                        </div>
+                        <div class="user-icon font-grey">
+                            <i class="fas fa-search mx-2 fs-4 pointer"></i>
+                            <i class="fas fa-paperclip mx-2 fs-4 pointer"></i>
+                            <i class="fas fa-ellipsis-v mx-2 fs-4 pointer"></i>
+                        </div>
+                    </div>
+
+                    <!-- message section -->
+                    <div class="message-section p-5">
+                        <div class="green-message my-3">
+                            <div class="message w-30 bg-green rounded-4 p-2">
+                                <div class="message-text fs-7">Hai portato a spasso il cane?</div>
+                                <div class="message-date fs-8 font-grey text-end">10/01/2020 15:30:55</div>
+                            </div>
+                        </div>
+                        <div class="green-message my-3">
+                            <div class="message w-30 bg-green rounded-4 p-2">
+                                <div class="message-text fs-7">Ricordati di dargli da mangiare</div>
+                                <div class="message-date fs-8 font-grey text-end">10/01/2020 15:50:00</div>
+                            </div>
+                        </div>
+                        <div class="white-message my-3">
+                            <div class="message w-30 bg-white rounded-4 p-2">
+                                <div class="message-text fs-7">Tutto fatto</div>
+                                <div class="message-date fs-8 font-grey text-end">10/01/2020 16:15:22</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- input message -->
+                    <div class="input-message-section bg-brown-light h-80px">
+                        <div class="d-flex justify-content-between align-items-center h-100">
+                            <div class="emoticon w-13 text-center fs-3 font-grey-dark pointer"><i
+                                    class="far fa-smile"></i>
+                            </div>
+                            <div class="input-message w-75">
+                                <input type="text" class="form-control fs-7" placeholder="Scrivi un messaggio">
+                            </div>
+                            <div class="vocal w-13 text-center fs-3 font-grey-dark pointer"><i
+                                    class="fas fa-microphone"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

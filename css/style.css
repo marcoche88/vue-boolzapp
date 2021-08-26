@@ -2,12 +2,20 @@
     cursor: pointer;
 }
 
-.red {
-    background-color: lightcoral;
+.rounded-4 {
+    border-radius: 10px;
 }
 
-.blue {
-    background-color: blue;
+.w-13 {
+    width: 13%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.h-80px {
+    height: 80px;
 }
 
 .bg-white {
@@ -26,6 +34,14 @@
     background-color: rgb(250, 250, 250);
 }
 
+.bg-brown-light {
+    background-color: rgb(238, 234, 230);
+}
+
+.bg-green {
+    background-color: rgb(220, 247, 192);
+}
+
 .font-grey {
     color: rgb(177, 177, 177);
 }
@@ -42,10 +58,15 @@
     font-size: 0.8rem;
 }
 
+.fs-8 {
+    font-size: 0.6rem;
+}
+
 #main-background {
     background: linear-gradient(to top, rgb(220, 219, 211) 85%, rgb(65, 148, 136) 15%);
     height: 100vh;
 }
+
 #main-section {
     height: calc(100vh - 48px);
 }
@@ -56,10 +77,6 @@
 
 .user-name span  {
     line-height: 80px;
-}
-
-.user-section, .notice-section {
-    height: 80px;
 }
 
 .notice-icon {
@@ -73,11 +90,22 @@
     overflow-y: scroll;
 }
 
-.contact {
-    height: 80px;
-}
-
 .contact:hover {
     background-color: rgb(233, 235, 235);
 }
 
+.green-message {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.message-section {
+    height: calc(100% - 160px);
+    background-image:url("../img/mine.jpg");
+    overflow-y: scroll;
+}
+
+.input-message input {
+    height: 50px;
+}
