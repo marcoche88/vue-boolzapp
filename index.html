@@ -23,45 +23,63 @@
             <div class="row h-100">
 
                 <!-- left side -->
-                <div class="col-4 h-100 red gx-0">
+                <div class="col-4 gx-0">
                     <!-- user -->
-                    <div class="user-section d-flex justify-content-between align-items-center p-2">
-                        <div class="user-name">Nome</div>
-                        <div class="user-icon">Icone</div>
+                    <div class="user-section d-flex justify-content-between align-items-center bg-grey-light p-2">
+                        <div class="user-name w-50">
+                            <img src="./img/avatar_io.jpg" class="w-25 img-fluid rounded-circle" alt="avatar">
+                            <span class="mx-1">Nome Utente</span>
+                        </div>
+                        <div class="user-icon font-grey">
+                            <i class="fas fa-circle-notch mx-2 fs-4 pointer"></i>
+                            <i class="fas fa-comment-alt mx-2 fs-4 pointer"></i>
+                            <i class="fas fa-ellipsis-v mx-2 fs-4 pointer"></i>
+                        </div>
                     </div>
                     <!-- notice -->
-                    <div class="notice-section d-flex justify-content-start align-items-center p-2">
-                        <div class="notice-icon mx-2">
-                            Icona
+                    <div class="notice-section d-flex justify-content-start align-items-center p-2 bg-blue-light">
+                        <div class="notice-icon rounded-circle text-center bg-white fs-5 font-blue-light mx-2">
+                            <i class="fas fa-bell-slash"></i>
                         </div>
                         <div class="notice-message">
-                            <div class="notice-message-top">Message Top</div>
-                            <div class="notice-message-bottom">Message Bottom</div>
+                            <div class="notice-message-top">Ricevi notifiche di nuovi messaggi</div>
+                            <div class="notice-message-bottom fs-7 font-grey-dark"><a class="font-grey-dark"
+                                    href="#">Attiva notifiche
+                                    desktop</a></div>
                         </div>
                     </div>
                     <!-- input -->
-                    <div class="find-section p-2">
+                    <div class="find-section p-2 bg-grey-light-2">
                         <div class="input-group flex-nowrap">
-                            <span class="input-group-text white border-end-0"><i class="fas fa-search"></i></span>
-                            <input type="text" class="form-control border-start-0"
+                            <span class="input-group-text bg-white border-end-0"><i
+                                    class="fas fa-search font-grey"></i></span>
+                            <input type="text" class="form-control border-start-0 fs-7"
                                 placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                     <!-- contacts -->
-                    <div class="contacts-section">
-                        <div class="contact d-flex justify-content-start p-2">
-                            <div class="contact-icon mx-2">
-                                Icona
-                            </div>
-                            <div class="contact-name">
-                                Nome
-                            </div>
+                    <div class="contacts-section bg-white">
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                            <img src="./img/avatar_1.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
+                            <span class="mx-2">Michele</span>
+                        </div>
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                            <img src="./img/avatar_2.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
+                            <span class="mx-2">Fabio</span>
+                        </div>
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                            <img src="./img/avatar_3.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
+                            <span class="mx-2">Samuele</span>
+                        </div>
+                        <div class="contact d-flex justify-content-start p-2 pointer border-top">
+                            <img src="./img/avatar_4.jpg" class="img-fluid rounded-circle mx-2" alt="contact-1">
+                            <span class="mx-2">Luisa</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- right side -->
-                <div class="col-8 h-100 blue"></div>
+                <div class="col-8 blue"></div>
             </div>
         </div>
     </div>

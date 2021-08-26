@@ -1,3 +1,47 @@
+.pointer {
+    cursor: pointer;
+}
+
+.red {
+    background-color: lightcoral;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-blue-light {
+    background-color: rgb(158, 217, 248);
+}
+
+.bg-grey-light {
+    background-color: rgb(234, 234, 234);
+}
+
+.bg-grey-light-2 {
+    background-color: rgb(250, 250, 250);
+}
+
+.font-grey {
+    color: rgb(177, 177, 177);
+}
+
+.font-grey-dark {
+    color: rgb(102, 102, 102);
+}
+
+.font-blue-light {
+    color: rgb(158, 217, 248); 
+}
+
+.fs-7 {
+    font-size: 0.8rem;
+}
+
 #main-background {
     background: linear-gradient(to top, rgb(220, 219, 211) 85%, rgb(65, 148, 136) 15%);
     height: 100vh;
@@ -6,31 +50,34 @@
     height: calc(100vh - 48px);
 }
 
-.red {
-    background-color: red;
+.user-name img, .user-icon i {
+    vertical-align: middle;
 }
 
-.blue {
-    background-color: blue;
-}
-
-.white {
-    background-color: white;
+.user-name span  {
+    line-height: 80px;
 }
 
 .user-section, .notice-section {
-    border: 1px solid black;
     height: 80px;
 }
 
-.find-section {
-    border: 1px solid black;
+.notice-icon {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
 }
 
 .contacts-section {
-    border: 1px solid black;
-    height: calc(100% - 54px - 160px);
+    height: calc(100% - 49px - 160px);
     overflow-y: scroll;
 }
 
+.contact {
+    height: 80px;
+}
+
+.contact:hover {
+    background-color: rgb(233, 235, 235);
+}
 
