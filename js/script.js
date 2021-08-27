@@ -8,14 +8,8 @@ const app = new Vue({
         activeNumber: 0,
     },
     methods: {
-        selectUser(i) {
+        selectContact(i) {
             this.activeNumber = i;
-        },
-        isActive(i) {
-            this.contacts = this.contacts.map((item, index) => {
-                item.visible = (i === index);
-                return item;
-            });
         },
     },
 });

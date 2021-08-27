@@ -66,7 +66,7 @@
                         <div class="contacts-section bg-white">
                             <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px"
                                 v-for="(contact, index) in contacts" :key="index + contact.avatar"
-                                @click="selectUser(index)">
+                                @click="selectContact(index)">
                                 <img :src="`./img/avatar${contact.avatar}.jpg`" class="img-fluid rounded-circle mx-2"
                                     :alt="contact.name">
                                 <span class="mx-2">{{ contact.name }}</span>
