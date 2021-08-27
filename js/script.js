@@ -26,6 +26,15 @@ const app = new Vue({
                 status: 'sent',
             });
             this.inputMessage = "";
-        }
+            setTimeout(this.addAnswer, 1000);
+        },
+        addAnswer() {
+            const currentChat = this.contacts[this.activeNumber].messages;
+            currentChat.push({
+                date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+                message: "Ok",
+                status: 'received',
+            });
+        },
     },
 });
