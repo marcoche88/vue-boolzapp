@@ -5,8 +5,12 @@ const app = new Vue({
     data: {
         user: data.user,
         contacts: data.contacts,
+        activeNumber: 0,
     },
     methods: {
+        selectUser(i) {
+            this.activeNumber = i;
+        },
         isActive(i) {
             this.contacts = this.contacts.map((item, index) => {
                 item.visible = (i === index);

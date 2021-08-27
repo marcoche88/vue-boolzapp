@@ -66,7 +66,7 @@
                         <div class="contacts-section bg-white">
                             <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px"
                                 v-for="(contact, index) in contacts" :key="index + contact.avatar"
-                                @click="isActive(index)">
+                                @click="selectUser(index)">
                                 <img :src="`./img/avatar${contact.avatar}.jpg`" class="img-fluid rounded-circle mx-2"
                                     :alt="contact.name">
                                 <span class="mx-2">{{ contact.name }}</span>
@@ -78,14 +78,13 @@
                     <div class="col-8 h-100 gx-0">
 
                         <!-- contact right -->
-                        <div class="contact-right-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px"
-                            v-for="(contact, index) in contacts" :key="index + contact.avatar + index"
-                            v-if="contact.visible">
+                        <div
+                            class="contact-right-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px">
                             <div class="contact-right w-50 d-flex justify-content-start align-items-center p-2">
-                                <img :src="`./img/avatar${contact.avatar}.jpg`" class="w-13 img-fluid rounded-circle"
-                                    :alt="contact.name">
+                                <img :src="`./img/avatar${contacts[activeNumber].avatar}.jpg`"
+                                    class="w-13 img-fluid rounded-circle" :alt="contacts[activeNumber].name">
                                 <div class="contact-name mx-2">
-                                    <div class="contact-name-top">{{ contact.name }}</div>
+                                    <div class="contact-name-top">{{ contacts[activeNumber].name }}</div>
                                     <div class="contact-name-bottom fs-7 font-grey-dark">Ultimo accesso oggi alle</div>
                                 </div>
                             </div>
@@ -97,9 +96,9 @@
                         </div>
 
                         <!-- message section -->
-                        <div class="message-section p-5" v-for="(contact, index) in contacts"
-                            :key="index + contact.avatar" v-if="contact.visible">
-                            <div class="chat" v-for="(item, index) in contact.messages" :key="index + item.date">
+                        <div class="message-section p-5">
+                            <div class="chat" v-for="(item, index) in contacts[activeNumber].messages"
+                                :key="index + item.date">
                                 <div class="sent my-3" :class="item.status">
                                     <div class="message w-30 rounded-4 p-2">
                                         <div class="message-text fs-7">{{ item.message }}</div>
