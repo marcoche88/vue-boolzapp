@@ -31,7 +31,7 @@
                             class="user-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px">
                             <div class="user-name w-50">
                                 <img :src="`./img/avatar${user.avatar}.jpg`" class="w-25 img-fluid rounded-circle"
-                                    alt="avatar">
+                                    :alt="user.name">
                                 <span class="mx-1">{{ user.name }}</span>
                             </div>
                             <div class="user-icon font-grey">
@@ -65,9 +65,10 @@
                         <!-- contacts -->
                         <div class="contacts-section bg-white">
                             <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px"
-                                v-for="contact in contacts">
+                                v-for="(contact, index) in contacts" :key="index + contact.avatar"
+                                @click="isActive(index)">
                                 <img :src="`./img/avatar${contact.avatar}.jpg`" class="img-fluid rounded-circle mx-2"
-                                    alt="contact-1">
+                                    :alt="contact.name">
                                 <span class="mx-2">{{ contact.name }}</span>
                             </div>
                         </div>
@@ -77,12 +78,14 @@
                     <div class="col-8 h-100 gx-0">
 
                         <!-- contact right -->
-                        <div
-                            class="contact-right-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px">
+                        <div class="contact-right-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px"
+                            v-for="(contact, index) in contacts" :key="index + contact.avatar + index"
+                            v-if="contact.visible">
                             <div class="contact-right w-50 d-flex justify-content-start align-items-center p-2">
-                                <img src="./img/avatar_1.jpg" class="w-13 img-fluid rounded-circle" alt="contact-1">
+                                <img :src="`./img/avatar${contact.avatar}.jpg`" class="w-13 img-fluid rounded-circle"
+                                    :alt="contact.name">
                                 <div class="contact-name mx-2">
-                                    <div class="contact-name-top">Michele</div>
+                                    <div class="contact-name-top">{{ contact.name }}</div>
                                     <div class="contact-name-bottom fs-7 font-grey-dark">Ultimo accesso oggi alle</div>
                                 </div>
                             </div>
@@ -94,23 +97,14 @@
                         </div>
 
                         <!-- message section -->
-                        <div class="message-section p-5">
-                            <div class="green-message my-3">
-                                <div class="message w-30 bg-green rounded-4 p-2">
-                                    <div class="message-text fs-7">Hai portato a spasso il cane?</div>
-                                    <div class="message-date fs-8 font-grey text-end">10/01/2020 15:30:55</div>
-                                </div>
-                            </div>
-                            <div class="green-message my-3">
-                                <div class="message w-30 bg-green rounded-4 p-2">
-                                    <div class="message-text fs-7">Ricordati di dargli da mangiare</div>
-                                    <div class="message-date fs-8 font-grey text-end">10/01/2020 15:50:00</div>
-                                </div>
-                            </div>
-                            <div class="white-message my-3">
-                                <div class="message w-30 bg-white rounded-4 p-2">
-                                    <div class="message-text fs-7">Tutto fatto</div>
-                                    <div class="message-date fs-8 font-grey text-end">10/01/2020 16:15:22</div>
+                        <div class="message-section p-5" v-for="(contact, index) in contacts"
+                            :key="index + contact.avatar" v-if="contact.visible">
+                            <div class="chat" v-for="(item, index) in contact.messages" :key="index + item.date">
+                                <div class="sent my-3" :class="item.status">
+                                    <div class="message w-30 rounded-4 p-2">
+                                        <div class="message-text fs-7">{{ item.message }}</div>
+                                        <div class="message-date fs-8 font-grey text-end">{{ item.date }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -135,6 +129,7 @@
         </div>
     </div>
 
+    <script src="./js/data.js"></script>
     <script src="./js/script.js"></script>
 </body>
 

@@ -3,28 +3,15 @@ Vue.config.devtools = true;
 const app = new Vue({
     el: "#root",
     data: {
-        user: {
-            name: 'Nome Utente',
-            avatar: '_io',
-        },
-        contacts: [
-            {
-                name: 'Michele',
-                avatar: '_1',
-            },
-            {
-                name: 'Fabio',
-                avatar: '_2',
-            },
-            {
-                name: 'Samuele',
-                avatar: '_3',
-            },
-            {
-                name: 'Luisa',
-                avatar: '_4',
-            },
-        ],
+        user: data.user,
+        contacts: data.contacts,
     },
-    methods: {},
+    methods: {
+        isActive(i) {
+            this.contacts = this.contacts.map((item, index) => {
+                item.visible = (i === index);
+                return item;
+            });
+        },
+    },
 });

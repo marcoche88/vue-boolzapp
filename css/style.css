@@ -40,10 +40,6 @@
     background-color: rgb(238, 234, 230);
 }
 
-.bg-green {
-    background-color: rgb(220, 247, 192);
-}
-
 .font-grey {
     color: rgb(177, 177, 177);
 }
@@ -99,9 +95,22 @@
 }
 
 /* right side */
-.green-message {
+.sent {
     display: flex;
     justify-content: flex-end;
+}
+
+.sent .message {
+    background-color: rgb(220, 247, 192);
+}
+
+.received {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.received .message {
+    background-color: white;
 }
 
 .message-section {
