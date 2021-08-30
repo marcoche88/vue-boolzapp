@@ -61,7 +61,7 @@
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text bg-white border-end-0"><i
                                         class="fas fa-search font-grey"></i></span>
-                                <input v-model="inputSearch" @change="findContacts" type="text"
+                                <input v-model="inputSearch" @keyup="findContacts" type="text"
                                     class="form-control border-start-0 fs-7"
                                     placeholder="Cerca o inizia una nuova chat">
                             </div>
@@ -70,7 +70,7 @@
                         <div class="contacts-section bg-white">
                             <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px"
                                 :class="{'active': index === activeNumber}" v-for="(contact, index) in contacts"
-                                :key="index + contact.avatar" @click="selectContact(index)">
+                                :key="index + contact.avatar" @click="selectContact(index)" v-if="contact.visible">
                                 <img :src="`./img/avatar${contact.avatar}.jpg`" class="img-fluid rounded-circle mx-2"
                                     :alt="contact.name">
                                 <span class="mx-2">{{ contact.name }}</span>

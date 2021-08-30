@@ -45,15 +45,9 @@ const app = new Vue({
             return messageReceived[messageReceived.length - 1].date;
         },
         findContacts() {
-            console.log("ok");
             this.contacts = this.contacts.map((contact) => {
-                if (contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())) {
-                    contact.visible = true;
-                    return contact;
-                } else {
-                    contact.visible = false;
-                    return contact;
-                }
+                contact.visible = contact.name.toLowerCase().includes(this.inputSearch.toLowerCase());
+                return contact;
             });
         },
     },
