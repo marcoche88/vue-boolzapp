@@ -13,27 +13,47 @@ const app = new Vue({
         contacts: data.contacts,
         activeNumber: 0,
         inputMessage: "",
+        inputSearch: "",
     },
     methods: {
         selectContact(i) {
             this.activeNumber = i;
         },
         addMessage() {
-            const currentChat = this.contacts[this.activeNumber].messages;
-            currentChat.push({
-                date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-                message: this.inputMessage,
-                status: 'sent',
-            });
+            if (!this.inputMessage) return;
+            this.generateMessage(this.inputMessage, "sent");
+
             this.inputMessage = "";
-            setTimeout(this.addAnswer, 1000);
+            setTimeout(() => {
+                this.generateMessage("Ok", "received");
+            }, 3000);
         },
-        addAnswer() {
+        generateMessage(message, status) {
             const currentChat = this.contacts[this.activeNumber].messages;
-            currentChat.push({
+            const newMessage = {
                 date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-                message: "Ok",
-                status: 'received',
+                message: message,
+                status: status,
+            };
+            currentChat.push(newMessage);
+        },
+        lastSeen() {
+            const currentContactMessages = this.contacts[this.activeNumber].messages;
+            const messageReceived = currentContactMessages.filter((item) => {
+                return item.status === "received";
+            });
+            return messageReceived[messageReceived.length - 1].date;
+        },
+        findContacts() {
+            console.log("ok");
+            this.contacts = this.contacts.map((contact) => {
+                if (contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())) {
+                    contact.visible = true;
+                    return contact;
+                } else {
+                    contact.visible = false;
+                    return contact;
+                }
             });
         },
     },

@@ -94,6 +94,10 @@
     background-color: rgb(233, 235, 235);
 }
 
+.active {
+    background-color: rgb(233, 235, 235);
+}
+
 /* right side */
 .sent {
     display: flex;

@@ -61,15 +61,16 @@
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text bg-white border-end-0"><i
                                         class="fas fa-search font-grey"></i></span>
-                                <input type="text" class="form-control border-start-0 fs-7"
+                                <input v-model="inputSearch" @change="findContacts" type="text"
+                                    class="form-control border-start-0 fs-7"
                                     placeholder="Cerca o inizia una nuova chat">
                             </div>
                         </div>
                         <!-- contacts -->
                         <div class="contacts-section bg-white">
                             <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px"
-                                v-for="(contact, index) in contacts" :key="index + contact.avatar"
-                                @click="selectContact(index)">
+                                :class="{'active': index === activeNumber}" v-for="(contact, index) in contacts"
+                                :key="index + contact.avatar" @click="selectContact(index)">
                                 <img :src="`./img/avatar${contact.avatar}.jpg`" class="img-fluid rounded-circle mx-2"
                                     :alt="contact.name">
                                 <span class="mx-2">{{ contact.name }}</span>
@@ -88,7 +89,8 @@
                                     class="w-13 img-fluid rounded-circle" :alt="contacts[activeNumber].name">
                                 <div class="contact-name mx-2">
                                     <div class="contact-name-top">{{ contacts[activeNumber].name }}</div>
-                                    <div class="contact-name-bottom fs-7 font-grey-dark">Ultimo accesso oggi alle</div>
+                                    <div class="contact-name-bottom fs-7 font-grey-dark">Ultimo accesso il {{ lastSeen()
+                                        }}</div>
                                 </div>
                             </div>
                             <div class="user-icon font-grey">
@@ -119,7 +121,7 @@
                                 </div>
                                 <div class="input-message w-75">
                                     <input type="text" class="form-control fs-7" placeholder="Scrivi un messaggio"
-                                        v-model="inputMessage" v-on:keyup.enter="addMessage">
+                                        v-model.trim="inputMessage" v-on:keyup.enter="addMessage">
                                 </div>
                                 <div class="vocal w-13 text-center fs-3 font-grey-dark pointer"><i
                                         class="fas fa-microphone"></i>
