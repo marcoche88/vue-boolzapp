@@ -11,9 +11,11 @@ const app = new Vue({
     data: {
         user: data.user,
         contacts: data.contacts,
-        activeNumber: 0,
+        activeNumber: -1,
         inputMessage: "",
         inputSearch: "",
+        showDropdown: false,
+        isWriting: false,
     },
     methods: {
         selectContact(i) {
@@ -24,8 +26,11 @@ const app = new Vue({
             this.generateMessage(this.inputMessage, "sent");
 
             this.inputMessage = "";
+            this.isWriting = true;
+
             setTimeout(() => {
                 this.generateMessage("Ok", "received");
+                this.isWriting = false;
             }, 3000);
         },
         generateMessage(message, status) {
@@ -49,6 +54,9 @@ const app = new Vue({
                 contact.visible = contact.name.toLowerCase().includes(this.inputSearch.toLowerCase());
                 return contact;
             });
+        },
+        toggleDropdown() {
+            this.showDropdown = !this.showDropdown;
         },
     },
 });

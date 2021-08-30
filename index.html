@@ -24,7 +24,7 @@
         <div id="main-background" class="py-4">
 
             <!-- main section -->
-            <div id="main-section" class="container">
+            <div id="main-section" class="container shadow rounded-3 overflow-hidden">
                 <div class="row h-100">
 
                     <!-- left side -->
@@ -88,7 +88,11 @@
                     </div>
 
                     <!-- right side -->
-                    <div class="col-8 h-100 gx-0">
+                    <div class="col-8 h-100 gx-0 d-flex justify-content-center align-items-center bg-grey-light-3"
+                        v-if="activeNumber === -1">
+                        <img src="./img/home.jpg" class="w-50" alt="home">
+                    </div>
+                    <div class="col-8 h-100 gx-0" v-else>
 
                         <!-- contact right -->
                         <div
@@ -98,8 +102,10 @@
                                     class="w-13 img-fluid rounded-circle" :alt="contacts[activeNumber].name">
                                 <div class="contact-name mx-2">
                                     <div class="contact-name-top">{{ contacts[activeNumber].name }}</div>
-                                    <div class="contact-name-bottom fs-7 font-grey-dark">Ultimo accesso il {{ lastSeen()
+                                    <div class="contact-name-bottom fs-7 font-grey-dark" v-if="!isWriting">Ultimo
+                                        accesso il {{ lastSeen()
                                         }}</div>
+                                    <div class="contact-name-bottom fs-7 font-grey-dark" v-else>Sta scrivendo...</div>
                                 </div>
                             </div>
                             <div class="user-icon font-grey">
@@ -115,7 +121,16 @@
                                 :key="index + item.date">
                                 <div class="sent my-3" :class="item.status">
                                     <div class="message w-30 rounded-4 p-2">
-                                        <div class="message-text fs-7">{{ item.message }}</div>
+                                        <div class="message-text d-flex justify-content-between align-items-center">
+                                            <div class="fs-7">{{ item.message }}</div>
+                                            <div class="arrow-delete position-relative">
+                                                <i class="fas fa-chevron-down pointer" @click="toggleDropdown"></i>
+                                                <div class="delete fs-7 font-grey pointer position-absolute end-0 p-3 text-center shadow rounded-3"
+                                                    v-if="showDropdown">
+                                                    Cancella messaggio
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="message-date fs-8 font-grey text-end">{{ item.date }}</div>
                                     </div>
                                 </div>
