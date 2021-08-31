@@ -81,7 +81,7 @@ const app = new Vue({
                 return contact;
             });
         },
-        // 
+        // filtra tra i messaggi della chat
         filterMessage(item) {
             if (!this.inputFilterMessage || this.inputFilterMessage.trim() === "") {
                 return true;

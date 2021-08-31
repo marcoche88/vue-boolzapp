@@ -124,8 +124,9 @@
                             <div class="chat" v-for="(item, index) in contacts[activeContact].messages"
                                 :key="index + item.date">
                                 <div class="my-3" :class="item.status" v-if="filterMessage(item.message)">
-                                    <div class="message w-30 rounded-4 p-2">
-                                        <div class="message-text d-flex justify-content-between align-items-center">
+                                    <div class="message w-30 rounded-4 p-2 position-relative">
+                                        <div
+                                            class="message-text bubble d-flex justify-content-between align-items-center">
                                             <div class="fs-7">{{ item.message }}</div>
                                             <div class="arrow position-relative">
                                                 <i class="fas fa-chevron-down pointer" @click="toggleDropdown"></i>
