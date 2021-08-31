@@ -20,9 +20,11 @@ const app = new Vue({
         inputFilterMessage: "",
     },
     methods: {
+        // seleziona contatto attivo
         selectContact(i) {
             this.activeContact = i;
         },
+        // aggiunge meassagio inviato e risposta automatica dopo 3 sec
         addMessage() {
             if (!this.inputMessage) return;
             this.generateMessage(this.inputMessage, "sent");
@@ -35,6 +37,7 @@ const app = new Vue({
                 this.isWriting = false;
             }, 3000);
         },
+        // genera la struttura dati dei messaggi
         generateMessage(message, status) {
             const currentChat = this.contacts[this.activeContact].messages;
             const newMessage = {
@@ -44,6 +47,7 @@ const app = new Vue({
             };
             currentChat.push(newMessage);
         },
+        // visualizza ultimo accesso del contatto
         lastSeen() {
             const currentContactMessages = this.contacts[this.activeContact].messages;
             const messageReceived = currentContactMessages.filter((item) => {
@@ -53,18 +57,22 @@ const app = new Vue({
                 return messageReceived[messageReceived.length - 1].date;
             }
         },
+        // ricerca tra i contatti della lista
         findContacts() {
             this.contacts = this.contacts.map((contact) => {
                 contact.visible = contact.name.toLowerCase().includes(this.inputSearch.toLowerCase());
                 return contact;
             });
         },
+        // mostra/nasconde il menu a tendina
         toggleDropdown(i) {
             this.showDropdown = !this.showDropdown;
         },
+        // mostra/nasconde l'input di ricerca dei messaggi
         toggleInput() {
             this.showInput = !this.showInput;
         },
+        // cancella il messaggio selezionato dalla chat
         deleteMessage(i) {
             this.contacts = this.contacts.map((contact, index) => {
                 if (index === this.activeContact) {
@@ -73,8 +81,13 @@ const app = new Vue({
                 return contact;
             });
         },
-        // findMessage() {
-
-        // },
+        // 
+        filterMessage(item) {
+            if (!this.inputFilterMessage || this.inputFilterMessage.trim() === "") {
+                return true;
+            }
+            const currentItem = item.toLowerCase();
+            return currentItem.includes(this.inputFilterMessage.toLowerCase()) ? true : false;
+        },
     },
 });

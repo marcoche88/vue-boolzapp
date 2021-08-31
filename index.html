@@ -113,7 +113,7 @@
                             <div class="user-icon font-grey">
                                 <i class="fas fa-search mx-2 fs-4 pointer" @click="toggleInput"></i>
                                 <input type="text" class="toggle-input fs-7" placeholder="Cerca..." v-if="showInput"
-                                    v-model="inputFilterMessage" @keyup="findMessages">
+                                    v-model="inputFilterMessage">
                                 <i class="fas fa-paperclip mx-2 fs-4 pointer"></i>
                                 <i class="fas fa-ellipsis-v mx-2 fs-4 pointer"></i>
                             </div>
@@ -123,13 +123,13 @@
                         <div class="message-section p-5">
                             <div class="chat" v-for="(item, index) in contacts[activeContact].messages"
                                 :key="index + item.date">
-                                <div class="sent my-3" :class="item.status">
+                                <div class="my-3" :class="item.status" v-if="filterMessage(item.message)">
                                     <div class="message w-30 rounded-4 p-2">
                                         <div class="message-text d-flex justify-content-between align-items-center">
                                             <div class="fs-7">{{ item.message }}</div>
                                             <div class="arrow position-relative">
                                                 <i class="fas fa-chevron-down pointer" @click="toggleDropdown"></i>
-                                                <div class="delete fs-7 font-grey pointer position-absolute end-0 p-3 text-center shadow rounded-3"
+                                                <div class="delete fs-7 font-grey pointer fw-bold position-absolute end-0 p-3 text-center shadow rounded-3"
                                                     v-if="showDropdown" @click="deleteMessage(index)">
                                                     Cancella messaggio
                                                 </div>
