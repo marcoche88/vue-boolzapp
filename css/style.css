@@ -164,8 +164,8 @@
     width: 0;
     height: 0;
     border-top: 10px solid transparent;
-    border-right: 20px solid white;
-    border-bottom: 10px solid transparent;
+    border-right: 17px solid white;
+    border-bottom: 1px solid transparent;
   }
 
   .sent .bubble:before {
@@ -176,7 +176,7 @@
     width: 0;
     height: 0;
     border-top: 10px solid transparent;
-    border-left: 20px solid rgb(220, 247, 192);
-    border-bottom: 10px solid transparent;
+    border-left: 17px solid rgb(220, 247, 192);
+    border-bottom: 1px solid transparent;
   }
   
