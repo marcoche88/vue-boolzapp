@@ -87,7 +87,7 @@ const app = new Vue({
                 return true;
             }
             const currentItem = item.toLowerCase();
-            return currentItem.includes(this.inputFilterMessage.toLowerCase()) ? true : false;
+            return currentItem.includes(this.inputFilterMessage.toLowerCase());
         },
     },
 });
