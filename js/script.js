@@ -67,7 +67,7 @@ const app = new Vue({
         },
         deleteMessage(i) {
             this.contacts = this.contacts.map((contact, index) => {
-                if (index === this.activeContact && contact.messages.length > 1) {
+                if (index === this.activeContact) {
                     contact.messages.splice(i, 1);
                 }
                 return contact;

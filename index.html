@@ -77,11 +77,12 @@
                                 <div class="d-flex flex-column justify-content-center flex-grow-1 mx-2">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>{{ contact.name }}</div>
-                                        <div class="fs-8 font-grey-dark">
+                                        <div class="fs-8 font-grey-dark" v-if="contact.messages.length > 0">
                                             {{ contact.messages[contact.messages.length -1].date }}
                                         </div>
                                     </div>
-                                    <div class="fs-7 font-grey-dark">{{ contact.messages[contact.messages.length
+                                    <div class="fs-7 font-grey-dark" v-if="contact.messages.length > 0">{{
+                                        contact.messages[contact.messages.length
                                         -1].message }}</div>
                                 </div>
                             </div>
