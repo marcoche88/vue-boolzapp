@@ -70,7 +70,7 @@
                         <!-- contacts -->
                         <div class="contacts-section bg-white">
                             <div class="contact d-flex justify-content-start p-2 pointer border-top h-80px"
-                                :class="{'active': index === activeNumber}" v-for="(contact, index) in contacts"
+                                :class="{'active': index === activeContact}" v-for="(contact, index) in contacts"
                                 :key="index + contact.avatar" @click="selectContact(index)" v-if="contact.visible">
                                 <img :src="`./img/avatar${contact.avatar}.jpg`" class="img-fluid rounded-circle mx-2"
                                     :alt="contact.name">
@@ -90,7 +90,7 @@
 
                     <!-- right side -->
                     <div class="col-8 h-100 gx-0 d-flex justify-content-center align-items-center bg-grey-light-3"
-                        v-if="activeNumber === -1">
+                        v-if="activeContact === -1">
                         <img src="./img/home.jpg" class="w-50" alt="home">
                     </div>
                     <div class="col-8 h-100 gx-0" v-else>
@@ -99,10 +99,10 @@
                         <div
                             class="contact-right-section d-flex justify-content-between align-items-center bg-grey-light p-2 h-80px">
                             <div class="contact-right w-50 d-flex justify-content-start align-items-center p-2">
-                                <img :src="`./img/avatar${contacts[activeNumber].avatar}.jpg`"
-                                    class="w-13 img-fluid rounded-circle" :alt="contacts[activeNumber].name">
+                                <img :src="`./img/avatar${contacts[activeContact].avatar}.jpg`"
+                                    class="w-13 img-fluid rounded-circle" :alt="contacts[activeContact].name">
                                 <div class="contact-name mx-2">
-                                    <div class="contact-name-top">{{ contacts[activeNumber].name }}</div>
+                                    <div class="contact-name-top">{{ contacts[activeContact].name }}</div>
                                     <div class="contact-name-bottom fs-7 font-grey-dark" v-if="!isWriting">Ultimo
                                         accesso il {{ lastSeen()
                                         }}</div>
@@ -110,7 +110,9 @@
                                 </div>
                             </div>
                             <div class="user-icon font-grey">
-                                <i class="fas fa-search mx-2 fs-4 pointer"></i>
+                                <i class="fas fa-search mx-2 fs-4 pointer" @click="toggleInput"></i>
+                                <input type="text" class="toggle-input fs-7" placeholder="Cerca..." v-if="showInput"
+                                    v-model="inputFilterMessage" @keyup="findMessages">
                                 <i class="fas fa-paperclip mx-2 fs-4 pointer"></i>
                                 <i class="fas fa-ellipsis-v mx-2 fs-4 pointer"></i>
                             </div>
@@ -118,16 +120,16 @@
 
                         <!-- message section -->
                         <div class="message-section p-5">
-                            <div class="chat" v-for="(item, index) in contacts[activeNumber].messages"
+                            <div class="chat" v-for="(item, index) in contacts[activeContact].messages"
                                 :key="index + item.date">
                                 <div class="sent my-3" :class="item.status">
                                     <div class="message w-30 rounded-4 p-2">
                                         <div class="message-text d-flex justify-content-between align-items-center">
                                             <div class="fs-7">{{ item.message }}</div>
-                                            <div class="arrow-delete position-relative">
+                                            <div class="arrow position-relative">
                                                 <i class="fas fa-chevron-down pointer" @click="toggleDropdown"></i>
                                                 <div class="delete fs-7 font-grey pointer position-absolute end-0 p-3 text-center shadow rounded-3"
-                                                    v-if="showDropdown">
+                                                    v-if="showDropdown" @click="deleteMessage(index)">
                                                     Cancella messaggio
                                                 </div>
                                             </div>

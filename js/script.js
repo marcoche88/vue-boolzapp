@@ -11,15 +11,17 @@ const app = new Vue({
     data: {
         user: data.user,
         contacts: data.contacts,
-        activeNumber: -1,
+        activeContact: -1,
         inputMessage: "",
         inputSearch: "",
         showDropdown: false,
         isWriting: false,
+        showInput: false,
+        inputFilterMessage: "",
     },
     methods: {
         selectContact(i) {
-            this.activeNumber = i;
+            this.activeContact = i;
         },
         addMessage() {
             if (!this.inputMessage) return;
@@ -34,7 +36,7 @@ const app = new Vue({
             }, 3000);
         },
         generateMessage(message, status) {
-            const currentChat = this.contacts[this.activeNumber].messages;
+            const currentChat = this.contacts[this.activeContact].messages;
             const newMessage = {
                 date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
                 message: message,
@@ -43,11 +45,13 @@ const app = new Vue({
             currentChat.push(newMessage);
         },
         lastSeen() {
-            const currentContactMessages = this.contacts[this.activeNumber].messages;
+            const currentContactMessages = this.contacts[this.activeContact].messages;
             const messageReceived = currentContactMessages.filter((item) => {
                 return item.status === "received";
             });
-            return messageReceived[messageReceived.length - 1].date;
+            if (messageReceived.length > 0) {
+                return messageReceived[messageReceived.length - 1].date;
+            }
         },
         findContacts() {
             this.contacts = this.contacts.map((contact) => {
@@ -55,8 +59,22 @@ const app = new Vue({
                 return contact;
             });
         },
-        toggleDropdown() {
+        toggleDropdown(i) {
             this.showDropdown = !this.showDropdown;
         },
+        toggleInput() {
+            this.showInput = !this.showInput;
+        },
+        deleteMessage(i) {
+            this.contacts = this.contacts.map((contact, index) => {
+                if (index === this.activeContact && contact.messages.length > 1) {
+                    contact.messages.splice(i, 1);
+                }
+                return contact;
+            });
+        },
+        // findMessage() {
+
+        // },
     },
 });
